@@ -478,8 +478,11 @@ function generatePropsFromVariantsOnly(
   }
 
   // Add common props that most components have
-  props.className = { type: "string", description: "Additional CSS classes" };
-  props.children = { type: "ReactNode", description: "Child elements" };
+  props["className"] = {
+    type: "string",
+    description: "Additional CSS classes",
+  };
+  props["children"] = { type: "ReactNode", description: "Child elements" };
 
   console.log(
     `  → Fallback: generated ${Object.keys(props).length} props from variants`,
@@ -769,7 +772,7 @@ async function generateRegistry(): Promise<GenerateRegistryResult> {
   for (const result of componentResults) {
     components[result.name] = result.schema;
     componentColors.set(result.name, result.colors);
-    byType.component.push(result.name);
+    byType["component"].push(result.name);
 
     if (!byCategory[result.category]) {
       byCategory[result.category] = [];
@@ -796,7 +799,7 @@ async function generateRegistry(): Promise<GenerateRegistryResult> {
       dependencies,
     };
     componentColors.set(result.name, result.colors);
-    byType.block.push(result.name);
+    byType["block"].push(result.name);
 
     if (!byCategory[result.category]) {
       byCategory[result.category] = [];
@@ -812,8 +815,8 @@ async function generateRegistry(): Promise<GenerateRegistryResult> {
 
   // Add InputArea as a synthetic component (uses Input's variants but has its own dimensions)
   // InputArea doesn't exist as a separate component file but needs registry metadata for Figma plugin
-  if (COMPONENT_STYLING_METADATA.InputArea) {
-    components.InputArea = {
+  if (COMPONENT_STYLING_METADATA["InputArea"]) {
+    components["InputArea"] = {
       name: "InputArea",
       type: "component",
       description:
@@ -821,13 +824,13 @@ async function generateRegistry(): Promise<GenerateRegistryResult> {
       importPath: "@cloudflare/kumo (synthetic - uses Input component)",
       category: "Input",
       props: {}, // Uses Input's props
-      styling: COMPONENT_STYLING_METADATA.InputArea,
+      styling: COMPONENT_STYLING_METADATA["InputArea"],
       examples: [],
       colors: [],
     };
     // Add to Input category
-    if (!byCategory.Input) {
-      byCategory.Input = [];
+    if (!byCategory["Input"]) {
+      byCategory["Input"] = [];
     }
     // Don't add to byName search (it's a synthetic entry for Figma plugin only)
   }

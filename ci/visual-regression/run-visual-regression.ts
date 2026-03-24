@@ -20,7 +20,7 @@ import {
 const WORKER_URL =
   "https://kumo-screenshot-worker.design-engineering.workers.dev";
 const SCREENSHOTS_DIR = "ci/visual-regression/screenshots";
-const API_KEY = process.env.SCREENSHOT_API_KEY ?? "";
+const API_KEY = process.env["SCREENSHOT_API_KEY"] ?? "";
 
 /**
  * Screenshot result returned by the worker.
@@ -68,7 +68,7 @@ interface ComparisonResult {
 
 function getChangedFiles(): string[] | null {
   try {
-    const base = process.env.GITHUB_BASE_REF || "main";
+    const base = process.env["GITHUB_BASE_REF"] || "main";
     const output = execSync(`git diff --name-only origin/${base}...HEAD`, {
       encoding: "utf-8",
     });
@@ -90,10 +90,10 @@ async function uploadImageToGitHub(
   imageBuffer: Buffer,
   filename: string,
 ): Promise<string> {
-  const token = process.env.GITHUB_TOKEN;
-  const repo = process.env.GITHUB_REPOSITORY ?? "cloudflare/kumo";
-  const prNumber = process.env.GITHUB_PR_NUMBER ?? process.env.PR_NUMBER;
-  const runId = process.env.GITHUB_RUN_ID ?? Date.now().toString();
+  const token = process.env["GITHUB_TOKEN"];
+  const repo = process.env["GITHUB_REPOSITORY"] ?? "cloudflare/kumo";
+  const prNumber = process.env["GITHUB_PR_NUMBER"] ?? process.env["PR_NUMBER"];
+  const runId = process.env["GITHUB_RUN_ID"] ?? Date.now().toString();
 
   if (!token) {
     throw new Error("GITHUB_TOKEN required for image upload");
@@ -477,9 +477,9 @@ function generateMarkdownReport(comparisons: ComparisonResult[]): string {
 }
 
 async function postPRComment(body: string): Promise<void> {
-  const token = process.env.GITHUB_TOKEN;
-  const prNumber = process.env.GITHUB_PR_NUMBER ?? process.env.PR_NUMBER;
-  const repo = process.env.GITHUB_REPOSITORY ?? "cloudflare/kumo";
+  const token = process.env["GITHUB_TOKEN"];
+  const prNumber = process.env["GITHUB_PR_NUMBER"] ?? process.env["PR_NUMBER"];
+  const repo = process.env["GITHUB_REPOSITORY"] ?? "cloudflare/kumo";
 
   if (!token || !prNumber) {
     console.log("Missing GITHUB_TOKEN or PR_NUMBER, skipping PR comment");
@@ -530,9 +530,9 @@ async function main(): Promise<void> {
   const args = process.argv.slice(2);
   const fullRegression = args.includes("--full");
 
-  const beforeUrl = process.env.BEFORE_URL ?? "https://kumo-ui.com";
+  const beforeUrl = process.env["BEFORE_URL"] ?? "https://kumo-ui.com";
   const afterUrl =
-    process.env.AFTER_URL ?? process.env.PREVIEW_URL ?? beforeUrl;
+    process.env["AFTER_URL"] ?? process.env["PREVIEW_URL"] ?? beforeUrl;
 
   console.log("Discovering components from docs site...");
   const allComponents = await discoverComponents(beforeUrl);

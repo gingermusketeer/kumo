@@ -90,7 +90,7 @@ function getSizeConfigFromRegistry(size: string) {
   const inputAreaSizeData =
     inputAreaStyling?.sizeVariants?.[size] ||
     FALLBACK_INPUT_AREA_CONFIG[size] ||
-    FALLBACK_INPUT_AREA_CONFIG.base;
+    FALLBACK_INPUT_AREA_CONFIG["base"];
 
   // Get Input dimensions (paddingX, fontSize, borderRadius) from registry
   const inputSizeVariant =

@@ -113,7 +113,7 @@ function parseSwitchDimensions(size: string): {
       base: { width: 42, height: 26 }, // h-6.5 w-10.5 = 6.5*4, 10.5*4
       lg: { width: 50, height: 30 }, // h-7.5 w-12.5 = 7.5*4, 12.5*4
     };
-  return fallbackDimensions[size] || fallbackDimensions.base;
+  return fallbackDimensions[size] || fallbackDimensions["base"];
 }
 
 /**

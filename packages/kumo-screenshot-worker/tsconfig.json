@@ -6,6 +6,9 @@
     "lib": ["ES2021", "DOM"],
     "types": [],
     "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": true,
     "noEmit": true,
     "skipLibCheck": true
   },

@@ -26,8 +26,9 @@ import { FONT_SIZE, FALLBACK_VALUES, SPACING } from "./shared";
 import registry from "@cloudflare/kumo/ai/component-registry.json";
 
 // Use type assertion for Label component
-const labelComponent = (registry.components as Record<string, unknown>)
-  .Label as {
+const labelComponent = (registry.components as Record<string, unknown>)[
+  "Label"
+] as {
   name: string;
   description: string;
   props: Record<string, unknown>;
@@ -41,11 +42,11 @@ describe("Label Generator - Registry Validation", () => {
   });
 
   it("should have expected props in registry", () => {
-    expect(labelComponent.props.children).toBeDefined();
-    expect(labelComponent.props.showOptional).toBeDefined();
-    expect(labelComponent.props.tooltip).toBeDefined();
-    expect(labelComponent.props.className).toBeDefined();
-    expect(labelComponent.props.asContent).toBeDefined();
+    expect(labelComponent.props["children"]).toBeDefined();
+    expect(labelComponent.props["showOptional"]).toBeDefined();
+    expect(labelComponent.props["tooltip"]).toBeDefined();
+    expect(labelComponent.props["className"]).toBeDefined();
+    expect(labelComponent.props["asContent"]).toBeDefined();
   });
 
   it("should have colors in registry", () => {

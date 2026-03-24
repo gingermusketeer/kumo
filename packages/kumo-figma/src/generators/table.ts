@@ -41,8 +41,9 @@ import registry from "@cloudflare/kumo/ai/component-registry.json";
 
 // Extract Table component data from registry
 // Use type assertion since Table exists but TypeScript strict typing doesn't include all components
-const tableComponent = (registry.components as Record<string, unknown>)
-  .Table as {
+const tableComponent = (registry.components as Record<string, unknown>)[
+  "Table"
+] as {
   name: string;
   description: string;
   props: {

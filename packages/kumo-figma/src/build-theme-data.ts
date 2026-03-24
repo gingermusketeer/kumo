@@ -414,14 +414,14 @@ console.log(`   - Shadows: ${Object.keys(tailwindShadows).length} values`);
 console.log("\n🎨 Parsing Kumo theme-kumo.css overrides...");
 const kumoFontSizes = parseKumoFontSizes(kumoThemeCss);
 console.log(
-  `   - Font size overrides: xs=${kumoFontSizes.xs}px, sm=${kumoFontSizes.sm}px, base=${kumoFontSizes.base}px, lg=${kumoFontSizes.lg}px`,
+  `   - Font size overrides: xs=${kumoFontSizes["xs"]}px, sm=${kumoFontSizes["sm"]}px, base=${kumoFontSizes["base"]}px, lg=${kumoFontSizes["lg"]}px`,
 );
 
 // Parse button compact sizes
 console.log("\n🔘 Parsing button.tsx compact sizes...");
 const buttonCompactSizes = parseButtonCompactSizes(buttonTsx);
 console.log(
-  `   - Compact sizes: xs=${buttonCompactSizes.xs}px, sm=${buttonCompactSizes.sm}px, base=${buttonCompactSizes.base}px, lg=${buttonCompactSizes.lg}px`,
+  `   - Compact sizes: xs=${buttonCompactSizes["xs"]}px, sm=${buttonCompactSizes["sm"]}px, base=${buttonCompactSizes["base"]}px, lg=${buttonCompactSizes["lg"]}px`,
 );
 
 // Generate full spacing scale
@@ -471,27 +471,27 @@ const themeData = {
 
     // For shared.ts BORDER_RADIUS constant (from Tailwind v4)
     borderRadius: {
-      xs: tailwindBorderRadius.xs, // 2px
-      sm: tailwindBorderRadius.sm, // 4px
-      md: tailwindBorderRadius.md, // 6px
-      lg: tailwindBorderRadius.lg, // 8px
-      xl: tailwindBorderRadius.xl, // 12px
+      xs: tailwindBorderRadius["xs"], // 2px
+      sm: tailwindBorderRadius["sm"], // 4px
+      md: tailwindBorderRadius["md"], // 6px
+      lg: tailwindBorderRadius["lg"], // 8px
+      xl: tailwindBorderRadius["xl"], // 12px
       full: 9999,
     },
 
     // For shared.ts FONT_SIZE constant (Kumo overrides)
     fontSize: {
-      xs: kumoFontSizes.xs, // 12px
-      sm: kumoFontSizes.sm, // 13px (Kumo override)
-      base: kumoFontSizes.base, // 14px (Kumo override)
-      lg: kumoFontSizes.lg, // 16px (Kumo override)
+      xs: kumoFontSizes["xs"], // 12px
+      sm: kumoFontSizes["sm"], // 13px (Kumo override)
+      base: kumoFontSizes["base"], // 14px (Kumo override)
+      lg: kumoFontSizes["lg"], // 16px (Kumo override)
     },
 
     // For shared.ts FALLBACK_VALUES.fontWeight
     fontWeight: {
-      normal: tailwindFontWeights.normal, // 400
-      medium: tailwindFontWeights.medium, // 500
-      semiBold: tailwindFontWeights.semibold, // 600
+      normal: tailwindFontWeights["normal"], // 400
+      medium: tailwindFontWeights["medium"], // 500
+      semiBold: tailwindFontWeights["semibold"], // 600
     },
 
     // For shared.ts FALLBACK_VALUES.buttonCompactSize
@@ -499,8 +499,8 @@ const themeData = {
 
     // For shared.ts SHADOWS (computed from Tailwind)
     shadows: {
-      xs: tailwindShadows.xs,
-      lg: tailwindShadows.lg,
+      xs: tailwindShadows["xs"],
+      lg: tailwindShadows["lg"],
     },
   },
 };

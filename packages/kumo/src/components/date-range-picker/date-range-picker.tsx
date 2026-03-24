@@ -521,6 +521,8 @@ function DateRangeDayCell({
         return "bg-kumo-interact";
       case DateRangeCellMode.SELECTED_OUT_OF_RANGE:
         return "bg-kumo-fill";
+      default:
+        return "bg-transparent";
     }
   }, [mode]);
 

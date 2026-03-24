@@ -235,7 +235,7 @@ export function Select<T, Multiple extends boolean | undefined = false>({
   const fallbackLabel = typeof label === "string" ? label : placeholder;
 
   // Deprecation warning for hideLabel
-  if (process.env.NODE_ENV !== "production" && hideLabel !== undefined) {
+  if (process.env["NODE_ENV"] !== "production" && hideLabel !== undefined) {
     console.warn(
       "[Kumo Select]: `hideLabel` is deprecated. For hidden labels, use `aria-label` instead of `label` + `hideLabel={true}`.\n" +
         "  Migration:\n" +

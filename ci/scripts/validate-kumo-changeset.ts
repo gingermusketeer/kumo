@@ -63,7 +63,7 @@ function main() {
 
   if (newKumoChangesets.length === 0) {
     // Use CI collapsible section for better visibility (CI only)
-    if (process.env.CI) {
+    if (process.env["CI"]) {
       console.error(
         "\x1b[0Ksection_start:" +
           Date.now() +
@@ -106,7 +106,7 @@ function main() {
       "This ensures proper versioning and changelog generation for the kumo package.",
     );
     console.error("");
-    if (process.env.CI) {
+    if (process.env["CI"]) {
       console.error(
         "\x1b[0Ksection_end:" + Date.now() + ":changeset_error\r\x1b[0K",
       );
@@ -223,7 +223,7 @@ function parseChangesetPackages(content: string): string[] {
  * Checks if we're running in a local development context (not CI)
  */
 function isLocalContext(): boolean {
-  return !process.env.CI;
+  return !process.env["CI"];
 }
 
 // Run if this is the main module (ES module compatible check)

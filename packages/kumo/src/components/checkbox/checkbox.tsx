@@ -219,7 +219,7 @@ const CheckboxBase = forwardRef<HTMLButtonElement, CheckboxProps>(
     ref,
   ) => {
     // A11y enforcement: warn in dev if no accessible name provided
-    if (process.env.NODE_ENV !== "production") {
+    if (process.env["NODE_ENV"] !== "production") {
       const hasLabel = Boolean(label);
       const hasAriaLabel = Boolean(props["aria-label"]);
       const hasAriaLabelledBy = Boolean(props["aria-labelledby"]);

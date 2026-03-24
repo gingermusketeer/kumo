@@ -349,11 +349,11 @@ describe("CommandPalette Generator - All Data Structure", () => {
 
   it("should have parsedStyles for all component parts", () => {
     expect(allData.parsedStyles).toBeDefined();
-    expect(allData.parsedStyles.container).toBeDefined();
-    expect(allData.parsedStyles.inputHeader).toBeDefined();
-    expect(allData.parsedStyles.list).toBeDefined();
-    expect(allData.parsedStyles.item).toBeDefined();
-    expect(allData.parsedStyles.footer).toBeDefined();
+    expect(allData.parsedStyles["container"]).toBeDefined();
+    expect(allData.parsedStyles["inputHeader"]).toBeDefined();
+    expect(allData.parsedStyles["list"]).toBeDefined();
+    expect(allData.parsedStyles["item"]).toBeDefined();
+    expect(allData.parsedStyles["footer"]).toBeDefined();
   });
 
   it("should have subComponents list", () => {

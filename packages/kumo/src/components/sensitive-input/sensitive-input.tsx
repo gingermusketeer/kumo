@@ -148,6 +148,7 @@ export const SensitiveInput = forwardRef<HTMLInputElement, SensitiveInputProps>(
         const timeoutId = setTimeout(() => setCopied(false), 2000);
         return () => clearTimeout(timeoutId);
       }
+      return;
     }, [copied]);
 
     const copyToClipboard = useCallback(

@@ -23,8 +23,9 @@ export interface ChangedFilesOptions {
  */
 export function getGitRefs(): GitRefs {
   // GitHub Actions provides these environment variables
-  const baseRef = process.env.GITHUB_BASE_REF;
-  const headRef = process.env.GITHUB_HEAD_REF || process.env.GITHUB_SHA || "HEAD";
+  const baseRef = process.env["GITHUB_BASE_REF"];
+  const headRef =
+    process.env["GITHUB_HEAD_REF"] || process.env["GITHUB_SHA"] || "HEAD";
 
   // If baseRef exists (PR context), verify it's available
   if (baseRef) {
@@ -38,15 +39,13 @@ export function getGitRefs(): GitRefs {
       console.log(`Using base ref: ${fallbackRef}`);
       return { baseRef: fallbackRef, headRef };
     } catch (error) {
-      console.warn(
-        `  Could not fetch base branch ${baseRef}: ${error}`,
-      );
+      console.warn(`  Could not fetch base branch ${baseRef}: ${error}`);
     }
   }
 
   // Local development fallback: use merge-base with origin/main
   // This ensures we only see changes introduced by the branch, not changes on main
-  if (!process.env.CI && !process.env.GITHUB_ACTIONS) {
+  if (!process.env["CI"] && !process.env["GITHUB_ACTIONS"]) {
     // First verify origin/main exists
     try {
       execSync("git rev-parse --verify origin/main", {
@@ -92,9 +91,7 @@ export function getChangedFiles(
     const { baseRef, headRef } = getGitRefs();
 
     if (!baseRef) {
-      console.warn(
-        "  Warning: Could not determine base ref for file changes",
-      );
+      console.warn("  Warning: Could not determine base ref for file changes");
       return null;
     }
 
@@ -207,10 +204,10 @@ export function isPullRequestContext(): boolean {
   // 2. GITHUB_PR_NUMBER is set
   // 3. Manual override: CI_FORCE_PR_VALIDATION === 'true'
   return (
-    process.env.GITHUB_EVENT_NAME === "pull_request" ||
-    process.env.GITHUB_EVENT_NAME === "pull_request_target" ||
-    process.env.GITHUB_PR_NUMBER !== undefined ||
-    process.env.CI_FORCE_PR_VALIDATION === "true"
+    process.env["GITHUB_EVENT_NAME"] === "pull_request" ||
+    process.env["GITHUB_EVENT_NAME"] === "pull_request_target" ||
+    process.env["GITHUB_PR_NUMBER"] !== undefined ||
+    process.env["CI_FORCE_PR_VALIDATION"] === "true"
   );
 }
 
@@ -218,17 +215,13 @@ export function isPullRequestContext(): boolean {
  * Logs the detected pull request context for transparency
  */
 export function logPullRequestContext(): void {
-  if (process.env.GITHUB_EVENT_NAME === "pull_request") {
+  if (process.env["GITHUB_EVENT_NAME"] === "pull_request") {
     console.log("Detected PR context: Pull request event");
-  } else if (process.env.GITHUB_EVENT_NAME === "pull_request_target") {
+  } else if (process.env["GITHUB_EVENT_NAME"] === "pull_request_target") {
     console.log("Detected PR context: Pull request target event");
-  } else if (process.env.GITHUB_PR_NUMBER) {
-    console.log(
-      `Detected PR context: PR #${process.env.GITHUB_PR_NUMBER}`,
-    );
-  } else if (process.env.CI_FORCE_PR_VALIDATION === "true") {
+  } else if (process.env["GITHUB_PR_NUMBER"]) {
+    console.log(`Detected PR context: PR #${process.env["GITHUB_PR_NUMBER"]}`);
+  } else if (process.env["CI_FORCE_PR_VALIDATION"] === "true") {
     console.log("Detected PR context: Manual validation override");
   }
 }
-
-

@@ -82,16 +82,16 @@ export interface Reporter {
  * Uses GitHub Actions environment variables
  */
 export function buildContextFromEnv(): CIContext {
-  const commitSha = process.env.GITHUB_SHA ?? "";
+  const commitSha = process.env["GITHUB_SHA"] ?? "";
   return {
     commitSha,
     shortSha: commitSha.substring(0, 8),
-    prNumber: process.env.GITHUB_PR_NUMBER ?? process.env.PR_NUMBER ?? "",
-    repository: process.env.GITHUB_REPOSITORY ?? "cloudflare/kumo",
-    apiToken: process.env.GITHUB_TOKEN ?? "",
-    packageName: process.env.PACKAGE_NAME ?? "@cloudflare/kumo",
-    packageVersion: process.env.PACKAGE_VERSION ?? "",
-    kumoDocsPreviewUrl: process.env.KUMO_DOCS_PREVIEW_URL,
+    prNumber: process.env["GITHUB_PR_NUMBER"] ?? process.env["PR_NUMBER"] ?? "",
+    repository: process.env["GITHUB_REPOSITORY"] ?? "cloudflare/kumo",
+    apiToken: process.env["GITHUB_TOKEN"] ?? "",
+    packageName: process.env["PACKAGE_NAME"] ?? "@cloudflare/kumo",
+    packageVersion: process.env["PACKAGE_VERSION"] ?? "",
+    kumoDocsPreviewUrl: process.env["KUMO_DOCS_PREVIEW_URL"],
   };
 }
 

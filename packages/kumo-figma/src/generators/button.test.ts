@@ -387,7 +387,7 @@ describe("Button Generator - State Styles Map", () => {
   it("should have focus state with addRing for accessibility", () => {
     const stateStyles = getStateStylesMap();
     for (const variant of variantProp.values) {
-      expect(stateStyles[variant].focus.addRing).toBe(true);
+      expect(stateStyles[variant]["focus"].addRing).toBe(true);
     }
   });
 });

@@ -91,7 +91,7 @@ function getSizeConfigFromRegistry(size: string) {
   };
 
   const dims =
-    dimensions || fallbackDimensions[size] || fallbackDimensions.base;
+    dimensions || fallbackDimensions[size] || fallbackDimensions["base"];
 
   // Layout-specific widths (not in registry - generator specific)
   const widthMap: Record<string, number> = {
@@ -106,7 +106,7 @@ function getSizeConfigFromRegistry(size: string) {
     paddingX: dims.paddingX,
     fontSize: dims.fontSize,
     borderRadius: dims.borderRadius,
-    width: widthMap[size] || widthMap.base,
+    width: widthMap[size] || widthMap["base"],
   };
 }
 

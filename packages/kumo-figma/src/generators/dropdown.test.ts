@@ -68,9 +68,9 @@ describe("Dropdown Generator - Registry Validation", () => {
       string,
       unknown
     >;
-    expect(subComponents.Trigger).toBeDefined();
-    expect(subComponents.Content).toBeDefined();
-    expect(subComponents.Item).toBeDefined();
+    expect(subComponents["Trigger"]).toBeDefined();
+    expect(subComponents["Content"]).toBeDefined();
+    expect(subComponents["Item"]).toBeDefined();
   });
 });
 

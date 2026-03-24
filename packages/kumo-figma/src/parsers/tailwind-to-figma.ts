@@ -323,7 +323,7 @@ export function parseTailwindClasses(classes: string): ParsedStyles {
       result.borderRadius = getOrDefault(
         BORDER_RADIUS_SCALE,
         key,
-        BORDER_RADIUS_SCALE.DEFAULT,
+        BORDER_RADIUS_SCALE["DEFAULT"],
       );
       continue;
     }

@@ -36,8 +36,9 @@ import registry from "@cloudflare/kumo/ai/component-registry.json";
 
 // Extract Label component data from registry
 // Use type assertion since Label exists but TypeScript strict typing doesn't include all components
-const labelComponent = (registry.components as Record<string, unknown>)
-  .Label as {
+const labelComponent = (registry.components as Record<string, unknown>)[
+  "Label"
+] as {
   name: string;
   description: string;
   props: Record<string, unknown>;

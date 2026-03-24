@@ -166,22 +166,24 @@ export function extractStateClasses(
 
     // Check for hover states
     if (cls.startsWith("hover:") || cls.match(/^\[&:hover[^\]]*\]:/)) {
-      states.hover = states.hover ? `${states.hover} ${cls}` : cls;
+      states["hover"] = states["hover"] ? `${states["hover"]} ${cls}` : cls;
     }
     // Check for focus states (focus, focus-visible, focus-within)
     else if (
       cls.match(/^(focus|focus-visible|focus-within):/) ||
       cls.match(/^\[&:focus(-visible|-within)?[^\]]*\]:/)
     ) {
-      states.focus = states.focus ? `${states.focus} ${cls}` : cls;
+      states["focus"] = states["focus"] ? `${states["focus"]} ${cls}` : cls;
     }
     // Check for active state
     else if (cls.startsWith("active:")) {
-      states.active = states.active ? `${states.active} ${cls}` : cls;
+      states["active"] = states["active"] ? `${states["active"]} ${cls}` : cls;
     }
     // Check for disabled state
     else if (cls.startsWith("disabled:")) {
-      states.disabled = states.disabled ? `${states.disabled} ${cls}` : cls;
+      states["disabled"] = states["disabled"]
+        ? `${states["disabled"]} ${cls}`
+        : cls;
     }
     // Check for not-disabled state
     else if (cls.startsWith("not-disabled:")) {

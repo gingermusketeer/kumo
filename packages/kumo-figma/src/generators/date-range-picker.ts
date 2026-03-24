@@ -156,7 +156,8 @@ const SIZE_CONFIG = getSizeConfigFromRegistry();
  * Variant-specific background colors (from registry)
  */
 function getVariantBackground(variant: string): string {
-  const classes = variantProp.classes[variant] || variantProp.classes.default;
+  const classes =
+    variantProp.classes[variant] || variantProp.classes["default"];
   if (classes.indexOf("bg-kumo-overlay") >= 0) {
     return VAR_NAMES.color.overlay;
   } else if (classes.indexOf("bg-kumo-base") >= 0) {

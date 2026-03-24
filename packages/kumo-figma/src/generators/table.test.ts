@@ -33,8 +33,9 @@ import themeData from "../generated/theme-data.json";
 import registry from "@cloudflare/kumo/ai/component-registry.json";
 
 // Use type assertion for Table component
-const tableComponent = (registry.components as Record<string, unknown>)
-  .Table as {
+const tableComponent = (registry.components as Record<string, unknown>)[
+  "Table"
+] as {
   name: string;
   description: string;
   props: {
@@ -115,8 +116,8 @@ describe("Table Generator - Layout Config", () => {
     expect(config.values).toContain("auto");
     expect(config.values).toContain("fixed");
     expect(config.default).toBe("auto");
-    expect(config.descriptions.auto).toBeDefined();
-    expect(config.descriptions.fixed).toBeDefined();
+    expect(config.descriptions["auto"]).toBeDefined();
+    expect(config.descriptions["fixed"]).toBeDefined();
   });
 
   it("should match registry layout values", () => {
@@ -131,8 +132,8 @@ describe("Table Generator - Row Variant Config", () => {
     expect(config.values).toContain("default");
     expect(config.values).toContain("selected");
     expect(config.default).toBe("default");
-    expect(config.descriptions.default).toBeDefined();
-    expect(config.descriptions.selected).toBeDefined();
+    expect(config.descriptions["default"]).toBeDefined();
+    expect(config.descriptions["selected"]).toBeDefined();
   });
 
   it("should match registry variant values", () => {

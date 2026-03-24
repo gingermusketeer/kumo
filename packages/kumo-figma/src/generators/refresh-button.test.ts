@@ -196,10 +196,10 @@ describe("RefreshButton Generator - Icon Size Configuration", () => {
       lg: 20,
     };
 
-    const xs = REFRESH_ICON_SIZE.xs;
-    const sm = REFRESH_ICON_SIZE.sm;
-    const base = REFRESH_ICON_SIZE.base;
-    const lg = REFRESH_ICON_SIZE.lg;
+    const xs = REFRESH_ICON_SIZE["xs"];
+    const sm = REFRESH_ICON_SIZE["sm"];
+    const base = REFRESH_ICON_SIZE["base"];
+    const lg = REFRESH_ICON_SIZE["lg"];
 
     expect(sm).toBeGreaterThan(xs);
     expect(base).toBeGreaterThan(sm);

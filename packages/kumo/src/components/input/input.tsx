@@ -135,7 +135,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { required } = inputProps;
 
   // A11y enforcement: warn in dev if no accessible name provided
-  if (process.env.NODE_ENV !== "production") {
+  if (process.env["NODE_ENV"] !== "production") {
     const hasLabel = Boolean(label);
     const hasPlaceholderAndAriaLabel = Boolean(
       inputProps.placeholder && inputProps["aria-label"],
